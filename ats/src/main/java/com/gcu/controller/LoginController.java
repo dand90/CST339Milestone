@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.gcu.model.LoginModel;
-import com.gcu.model.OrderModel;
+import com.gcu.model.ProductModel;
 
 import javax.validation.Valid;
 
@@ -29,17 +29,17 @@ public class LoginController {
 			return "login";
 		}
 		
-		List<OrderModel> orders = new ArrayList<OrderModel>();
-		orders.add(new OrderModel(0L, "000000001", "Product 1", 1.00f, 1));
-		orders.add(new OrderModel(1L, "000000002", "Product 2", 3.00f, 2));
-		orders.add(new OrderModel(2L, "000000003", "Product 3", 3.00f, 3));
-		orders.add(new OrderModel(3L, "000000004", "Product 4", 4.00f, 4));
-		orders.add(new OrderModel(4L, "000000005", "Product 5", 5.00f, 5));
+		List<ProductModel> products = new ArrayList<ProductModel>();
+		products.add(new ProductModel(0L, "Head Chef", "Sushi Restaurant", 34.00f, 1));
+		products.add(new ProductModel(1L, "Cook", "Pizza Palace", 23.00f, 2));
+		products.add(new ProductModel(2L, "Kitchen Staff", "Sunday's", 17.00f, 3));
+		products.add(new ProductModel(3L, "Server", "Sushi Restaurant", 15.00f, 4));
+		products.add(new ProductModel(4L, "Host", "Sunday's", 15.00f, 2));
 		
-		model.addAttribute("title", "My Orders");
-		model.addAttribute("orders", orders);
+		model.addAttribute("title", "My Job Postings");
+		model.addAttribute("products", products);
 		
-		return "orders";
+		return "products";
 	}
 
 }

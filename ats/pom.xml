@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gcu</groupId>
-	<artifactId>Topic2-x</artifactId>
+	<artifactId>ats</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Topic2-x</name>
-	<description>Topic 2-2 project for Spring Boot</description>
+	<name>ats</name>
+	<description>Recruit ATS Project</description>
 	<url/>
 	<licenses>
 		<license/>
