@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gcu</groupId>
-	<artifactId>ats</artifactId>
+	<artifactId>Topic2-x</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ats</name>
-	<description>RecruitATS project for Spring Boot</description>
+	<name>Topic2-x</name>
+	<description>Topic 2-2 project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -30,6 +30,19 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-validation</artifactId>
+		    <version>2.7.0</version>
+		</dependency>
+
+				<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		    <version>2.0.1.Final</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -50,13 +63,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	
-   <dependency>
-     <groupId>org.springframework</groupId>
-     <artifactId>spring-context</artifactId>
-     <version>5.1.9.RELEASE</version>
-   </dependency>
- </dependencies>
+		<!-- https://mvnrepository.com/artifact/nz.net.ultraq.web.thymeleaf/thymeleaf-layout-dialect -->
+		<!-- https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect -->
+		<dependency>
+		    <groupId>nz.net.ultraq.thymeleaf</groupId>
+		    <artifactId>thymeleaf-layout-dialect</artifactId>
+		    <version>3.0.0</version>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<plugins>

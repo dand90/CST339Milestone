@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+	<body>
+		<div layout:fragment="content">
+		<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
+			<table>
+				<tr>
+					<td><label>Username</label></td>
+					<td><input type="text" th:field="*{username}" ></td>
+					<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</h5>
+				</tr>
+				<tr>
+					<td><label>Password</label></td>
+					<td><input type="password" th:field="*{password}" ></td>
+					<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Submit" /></td>
+					</td>
+				</tr>
+			</table>
+		<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+		<div th:each="err : ${#fields.errors('*')}">
+			<span style="color:red" th:text="${err}" class="fieldError"></span>
+		</div>
+		</form>
+		</div>
+	</body>
+</html>
