@@ -1,12 +1,12 @@
 package com.gcu.model;
-
+// ProductModel class: Declares private values for the job postings page.
 public class ProductModel {
 	private Long id;
 	private String jobPosting;
 	private String employerName;
 	private float salaryHr;
 	private int openingsNo;
-	
+	// Product model default constructor.
 	public ProductModel(Long id, String jobPosting, String employerName, float salaryHr, int openingsNo) {
 		this.id = id;
 		this.jobPosting = jobPosting;
@@ -14,7 +14,7 @@ public class ProductModel {
 		this.salaryHr = salaryHr;
 		this.openingsNo = openingsNo;
 	}
-
+	// Getters and setters for product model.
 	public Long getId() {
 		return id;
 	}
