@@ -14,10 +14,10 @@
 				<tr th:if="${products.empty}">
 					<td style="text-align:center" colspan="4">No Job Listings</td>
 				</tr>
-				<tr th:each="product : ${products}">
+				<tr style="border:0.1em solid gray;" th:each="product : ${products}">
 					<td style="text-align:center"><h5 th:text="${product.jobPosting}">0000000001</h5></td>
 					<td style="text-align:center"><h5 th:text="${product.employerName}">Product 1</h5></td>
-					<td style="text-align:center"><h5 th:text="${product.salaryHr}">1.00</h5>/hr</td>
+					<td style="text-align:center"><h5 th:text="${product.salaryHr}">1.0</h5></td>
 					<td style="text-align:center"><h5 th:text="${product.openingsNo}">1</h5></td>
 				</tr>
 			</tbody>
