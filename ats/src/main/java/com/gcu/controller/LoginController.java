@@ -29,7 +29,7 @@ public class LoginController {
 	}
 
 	//Controller for the page after Registration to redirect to login
-	@PostMapping("/login/reLogin")
+	@PostMapping("/reLogin")
 	public String reLogin(@Valid LoginModel loginModel, BindingResult bindingresult, Model model) {
 		//check for errors in the register form
 		if (bindingresult.hasErrors()) {
@@ -43,7 +43,7 @@ public class LoginController {
 	}
 		
 	//Controller for the register page
-	@GetMapping("/login/register")
+	@GetMapping("/register")
 	public String register(Model model) {
 			
 		model.addAttribute("title", "Register");
