@@ -8,11 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.model.LoginModel;
 import com.gcu.model.ProductModel;
-import com.gcu.model.UserModel;
 
 import javax.validation.Valid;
 
@@ -27,30 +25,7 @@ public class LoginController {
 		return "login";
 		
 	}
-
-	//Controller for the page after Registration to redirect to login
-	@PostMapping("/login/reLogin")
-	public String reLogin(@Valid LoginModel loginModel, BindingResult bindingresult, Model model) {
-		//check for errors in the register form
-		if (bindingresult.hasErrors()) {
-			model.addAttribute("title", "Register");
-			model.addAttribute("loginModel", new UserModel());
-			return "register";
-		}
 		
-		model.addAttribute("title", "return");
-		return "reLogin";	
-	}
-		
-	//Controller for the register page
-	@GetMapping("/login/register")
-	public String register(Model model) {
-			
-		model.addAttribute("title", "Register");
-		model.addAttribute("loginModel", new UserModel());
-		
-		return "register";
-	}
 	//Controller for doLogin, displays contents of products (Job Postings)
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
@@ -70,23 +45,6 @@ public class LoginController {
 		model.addAttribute("products", products);
 		
 		return "products";
-
-	/* 
-	//Controller to direct to the main application
-	@PostMapping("/mainApplication")
-	public String mainApplication(@Valid LoginModel loginmodel, BindingResult bindingresult, Model model) {
-		
-		//check for errors in the login form
-		if (bindingresult.hasErrors()) {
-			model.addAttribute("title", "Login Form");
-			return "login";
-		}
-		model.addAttribute("title", "Main Application");
-		model.addAttribute("users", new LoginModel());
-		
-		
-		return "mainApplication";
-	} */
 		
 	}
 
