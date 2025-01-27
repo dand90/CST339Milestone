@@ -37,12 +37,16 @@ public class NewPostingController {
 			return "newPosting";
 		}
 		
-		List<ProductModel> products = service.getProducts();
+		// Add the new product to the list
+        service.addProduct(productModel);
+
+        // Fetch the updated list of products
+        List<ProductModel> products = service.getProducts();
 
         model.addAttribute("title", "My Job Postings");
 		model.addAttribute("products", products);
 		
-		return "products";	
+		return "redirect:/products";	
 	}
 
 }
