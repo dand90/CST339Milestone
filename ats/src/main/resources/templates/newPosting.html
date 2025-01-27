@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+	<body>
+		<div layout:fragment="content">
+			<form th:action="@{/doPosting}" th:object="${productModel}" method="post">
+					<table>
+						<tr>
+							<td><label>Job Posting Title</label></td>
+							<td><input type="text" th:field="*{jobPosting}" ></td>
+							<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('jobPosting')}" th:errors="*{jobPosting}">Job Posting Title Error</h5>
+						</tr>
+						<tr>
+							<td><label>Employer Name</label></td>
+							<td><input type="text" th:field="*{employerName}" ></td>
+							<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('employerName')}" th:errors="*{employerName}">Employer Name Error</h5>
+						</tr>
+						<tr>
+							<td><label>Hourly Salary</label></td>
+							<td><input type="number" th:field="*{salaryHr}" ></td>
+							<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('salaryHr')}" th:errors="*{salaryHr}">Salary Error</h5>
+						</tr>
+						<tr>
+							<td><label>Number of Openings</label></td>
+							<td><input type="number" th:field="*{openingsNo}" ></td>
+							<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('openingsNo')}" th:errors="*{openingsNo}">Number of Openings Error</h5>
+						</tr>
+                        <tr>
+							<td style=text-align:center colspan="7"><input type="submit" value="Submit" /></td>
+						</tr>
+					</table>
+				<div th:if="${#fields.hasErrors('*')}">List Of Errors</div>
+				<div th:each="err : ${#fields.errors('*')}">
+					<span style="color:red" th:text="${err}" class="fieldError"></span>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

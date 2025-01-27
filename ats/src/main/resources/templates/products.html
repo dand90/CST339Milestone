@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
 	<body>
 		<div layout:fragment="content">
-		<table style="width:50%">
+		<table class="table table-hover" style="width:50%">
 			<thead>
 				<tr>
 					<th style="text-align:center">Job Posting</th>
@@ -10,7 +10,7 @@
 					<th style="text-align:center">Openings</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody .table-hover>
 				<tr th:if="${products.empty}">
 					<td style="text-align:center" colspan="4">No Job Listings</td>
 				</tr>
@@ -22,6 +22,8 @@
 				</tr>
 			</tbody>
 		</table>
+		<a href="/newPosting/" target="_blank">Create a New Job Posting</a>
 		</div>
+		
 	</body>
 </html>
