@@ -24,13 +24,18 @@ public class ProductModel {
 	@Positive(message="Number of Openings must at least include 1 digit")
 	private int openingsNo;
 
+	private String jobDesc;
+	private Long users_id;
+
 	// Product model default constructor.
-	public ProductModel(Long id, String jobPosting, String employerName, float salaryHr, int openingsNo) {
+	public ProductModel(Long id, String jobPosting, String employerName, float salaryHr, int openingsNo, String jobDesc, Long users_id) {
 		this.id = id;
 		this.jobPosting = jobPosting;
 		this.employerName = employerName;
 		this.salaryHr = salaryHr;
 		this.openingsNo = openingsNo;
+		this.jobDesc = jobDesc;
+		this.users_id = users_id;
 	}
 	public ProductModel() {
 		//TODO Auto-generated constructor stub
@@ -75,6 +80,19 @@ public class ProductModel {
 	public void setOpeningsNo(int openingsNo) {
 		this.openingsNo = openingsNo;
 	}
+	public String getJobDesc() {
+		return jobDesc;
+	}
+	public void setJobDesc(String jobDesc) {
+		this.jobDesc = jobDesc;
+	}
 
-	
+	public Long getUsers_Id() {
+		return users_id;
+	}
+
+	public void setUsers_id(Long users_id) {
+		this.users_id = users_id;
+	}
+
 }

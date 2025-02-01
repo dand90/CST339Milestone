@@ -3,36 +3,57 @@ package com.gcu.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gcu.data.ProductDataService;
+import com.gcu.entity.ProductEntity;
 import com.gcu.model.ProductModel;
 
 @Service
 public class ProductBusinessService implements ProductBusinessServiceInterface {
 
-    private List<ProductModel> products = new ArrayList<>();
+    @Autowired
+    ProductDataService service;
     
-    @PostConstruct
-    public void init() {
-        // Initialize the products
-        products = new ArrayList<>();
-        products.add(new ProductModel(0L, "Head Chef", "Sushi Restaurant", 34.00f, 1));
-        products.add(new ProductModel(1L, "Cook", "Pizza Palace", 23.00f, 2));
-        products.add(new ProductModel(2L, "Kitchen Staff", "Sunday's", 17.00f, 3));
-        products.add(new ProductModel(3L, "Server", "Sushi Restaurant", 15.00f, 4));
-        products.add(new ProductModel(4L, "Host", "Sunday's", 15.00f, 2));
+    @Override
+    public List<ProductModel> getProducts() {
+        List<ProductEntity> productEntity = service.findAll();
+        List<ProductModel> productsDomain = new ArrayList<>();
+        for(ProductEntity entity : productEntity)
+        {
+            productsDomain.add(new ProductModel(entity.getId(), entity.getJobPosting(), entity.getEmployerName(), entity.getSalaryHr(), entity.getOpeningsNo(), entity.getJobDesc(), entity.getUsers_Id()));
+        }
+        
+        return productsDomain;
     }
 
     @Override
-    public List<ProductModel> getProducts() {
+    public List<ProductModel> addProduct(ProductModel productModel) {
+        // Map the ProductModel to ProductEntity
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setJobPosting(productModel.getJobPosting());
+        productEntity.setEmployerName(productModel.getEmployerName());
+        productEntity.setSalaryHr(productModel.getSalaryHr());
+        productEntity.setOpeningsNo(productModel.getOpeningsNo());
+        productEntity.setJobDesc(productModel.getJobDesc());
+        productEntity.setUsers_Id(1L); // Set users_id to 1 for testing purposes
         
-        return products;
+        // Save the entity using ProductDataService
+        boolean success = service.create(productEntity);
+        
+        // If creation is successful, return the updated list of products
+        if (success) {
+            return getProducts();  // Fetch and return the updated list of products
+        } else {
+            // Handle failure (perhaps throw an exception or return an empty list)
+            return new ArrayList<>();
+        }
     }
 
-    public void addProduct(ProductModel product) {
-        products.add(product);
-    }
+    
+
+    
 
 }
