@@ -1,27 +1,37 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
-	<body>
-		<div layout:fragment="content">
-		<table style="width:50%">
-			<thead>
-				<tr>
-					<th style="text-align:center">Job Posting</th>
-					<th style="text-align:center">Employer Name</th>
-					<th style="text-align:center">Hourly Salary</th>
-					<th style="text-align:center">Openings</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:if="${products.empty}">
-					<td style="text-align:center" colspan="4">No Job Listings</td>
-				</tr>
-				<tr style="border:0.1em solid gray;" th:each="product : ${products}">
-					<td style="text-align:center"><h5 th:text="${product.jobPosting}">0000000001</h5></td>
-					<td style="text-align:center"><h5 th:text="${product.employerName}">Product 1</h5></td>
-					<td style="text-align:center"><h5 th:text="${product.salaryHr}">1.0</h5></td>
-					<td style="text-align:center"><h5 th:text="${product.openingsNo}">1</h5></td>
-				</tr>
-			</tbody>
-		</table>
-		</div>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h2 class="text-center">Job Listings</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Job Posting</th>
+                        <th class="text-center">Employer Name</th>
+                        <th class="text-center">Hourly Salary</th>
+                        <th class="text-center">Openings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${products.empty}">
+                        <td class="text-center" colspan="4">No Job Listings</td>
+                    </tr>
+                    <tr th:each="product : ${products}">
+                        <td class="text-center"><h5 th:text="${product.jobPosting}"></h5></td>
+                        <td class="text-center"><h5 th:text="${product.employerName}"></h5></td>
+                        <td class="text-center"><h5 th:text="${product.salaryHr}"></h5></td>
+                        <td class="text-center"><h5 th:text="${product.openingsNo}"></h5></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
 </html>

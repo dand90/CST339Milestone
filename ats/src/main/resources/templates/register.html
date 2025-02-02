@@ -1,50 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraraq.net.nz/thymeleaf/layout"
-  layout:decorate="layouts/defaultTemplate">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="layouts/defaultTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #f0f2f5, #cbdff9);
+            color: black;
+        }
+    </style>
+</head>
 <body>
-
-<div layout:fragment="content">
-<form action="#" th:action="@{reLogin}" th:object="${loginModel}" method="post">
-			<table>
-				<tr>
-					<td><label>First Name:</label></td>
-                    <td><input type="text" th:field="*{fName}" ></td>
-                    <h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('fName')}" th:errors="*{fName}">First Name Error</h5>
-				</tr>
-				<tr>
-					<td><label>Last Name:</label></td>
-                    <td><input type="text" th:field="*{lName}" ></td>
-                    <h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('lName')}" th:errors="*{lName}">Last Name Error</h5>
-				</tr>
-				<tr>
-					<td><label>Username</label></td>
-					<td><input type="text" th:field="*{username}" ></td>
-					<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</h5>
-				</tr>
-				<tr>
-					<td><label>Password</label></td>
-					<td><input type="password" th:field="*{password}" ></td>
-					<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5>
-				</tr>
-				<tr>
-					<td><label>Email</label></td>
-					<td><input type="text" th:field="*{email}" ></td>
-					<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</h5>
-				</tr>
-				<tr>
-					<td><label>Number</label></td>
-					<td><input type="text" th:field="*{pNumber}" ></td>
-					<h5 class="alert alert-danger" style="color:red" th:if="${#fields.hasErrors('pNumber')}" th:errors="*{pNumber}">Phone Number Error</h5>
-				</tr>
-				<tr>
-					<td style=text-align:center colspan="7"><input type="submit" value="Submit" /></td>
-				</tr>
-			</table>
-		<div th:if="${#fields.hasErrors('*')}">List Of Errors</div>
-		<div th:each="err : ${#fields.errors('*')}">
-			<span style="color:red" th:text="${err}" class="fieldError"></span>
-		</div>
-</form>
+<h1 class="text-center text-dark">Register</h1>
+<div layout:fragment="content" class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="panel panel-default text-dark">
+                <div class="panel-heading text-center">
+                    <img src="/images/file.jpg" alt="Register Icon" class="img-responsive center-block" style="max-width: 100px;">
+                    <strong>Registration Form</strong>
+                </div>
+                <div class="panel-body">
+                    <form action="#" th:action="@{reLogin}" th:object="${loginModel}" method="post">
+                        <div class="form-group">
+                            <label>First Name:</label>
+                            <input type="text" class="form-control" th:field="*{fName}">
+                            <p class="text-danger" th:if="${#fields.hasErrors('fName')}" th:errors="*{fName}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name:</label>
+                            <input type="text" class="form-control" th:field="*{lName}">
+                            <p class="text-danger" th:if="${#fields.hasErrors('lName')}" th:errors="*{lName}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Username:</label>
+                            <input type="text" class="form-control" th:field="*{username}">
+                            <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" class="form-control" th:field="*{password}">
+                            <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" class="form-control" th:field="*{email}">
+                            <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number:</label>
+                            <input type="text" class="form-control" th:field="*{pNumber}">
+                            <p class="text-danger" th:if="${#fields.hasErrors('pNumber')}" th:errors="*{pNumber}"></p>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
