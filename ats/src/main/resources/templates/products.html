@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
@@ -34,4 +35,33 @@
     </div>
 </div>
 </body>
+=======
+	<body>
+		<div layout:fragment="content">
+		<table class="table table-hover" style="width:50%">
+			<thead>
+				<tr>
+					<th style="text-align:center">Job Posting</th>
+					<th style="text-align:center">Employer Name</th>
+					<th style="text-align:center">Hourly Salary</th>
+					<th style="text-align:center">Openings</th>
+				</tr>
+			</thead>
+			<tbody .table-hover>
+				<tr th:if="${products.empty}">
+					<td style="text-align:center" colspan="4">No Job Listings</td>
+				</tr>
+				<tr style="border:0.1em solid gray;" th:each="product : ${products}">
+					<td style="text-align:center"><h5 th:text="${product.jobPosting}">0000000001</h5></td>
+					<td style="text-align:center"><h5 th:text="${product.employerName}">Product 1</h5></td>
+					<td style="text-align:center"><h5 th:text="${product.salaryHr}">1.0</h5></td>
+					<td style="text-align:center"><h5 th:text="${product.openingsNo}">1</h5></td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/newPosting/" target="_blank">Create a New Job Posting</a>
+		</div>
+		
+	</body>
+
 </html>
