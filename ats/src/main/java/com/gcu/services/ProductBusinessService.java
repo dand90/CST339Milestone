@@ -11,12 +11,14 @@ import com.gcu.data.ProductDataService;
 import com.gcu.entity.ProductEntity;
 import com.gcu.model.ProductModel;
 
+//ProductBusinessService implements ProductBusinessInterface 
 @Service
 public class ProductBusinessService implements ProductBusinessServiceInterface {
 
     @Autowired
     ProductDataService service;
     
+    //getProducts Method: returns products using findAll as a productsDomain ArrayList
     @Override
     public List<ProductModel> getProducts() {
         List<ProductEntity> productEntity = service.findAll();
@@ -29,6 +31,7 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
         return productsDomain;
     }
 
+    // addProduct Method: sets ProductEntity to ProductModel
     @Override
     public List<ProductModel> addProduct(ProductModel productModel) {
         // Map the ProductModel to ProductEntity
@@ -47,7 +50,7 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
         if (success) {
             return getProducts();  // Fetch and return the updated list of products
         } else {
-            // Handle failure (perhaps throw an exception or return an empty list)
+            // return previous list upon failure
             return new ArrayList<>();
         }
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 01, 2025 at 11:34 PM
+-- Generation Time: Feb 02, 2025 at 10:07 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -45,7 +45,8 @@ INSERT INTO `jobpostings` (`id`, `jobposting_name`, `employer_name`, `hourly_sal
 (1, 'Head Chef', 'Sushi Shiro', 35, 1, 'Looking for a head chef with 10 years sushi crafting experience.', 1),
 (2, 'Server', 'Sunday\'s', 15, 2, 'Sunday\'s is looking for a server with experience in customer service or food service.', 1),
 (3, 'Clerk', 'Tao Tei', 15, 2, 'Tao Tei is in need of an entry level clerk for the daily lunch rush.', 1),
-(4, 'Executive Chef', 'Pizza Planet', 55, 1, 'Pizza Planet is looking for an executive chef with 15 years of experience in a head chef position or similar.', 1);
+(4, 'Executive Chef', 'Pizza Planet', 55, 1, 'Pizza Planet is looking for an executive chef with 15 years of experience in a head chef position or similar.', 1),
+(5, 'Server', 'Italian Fine Cuisine', 18, 1, 'Italian Fine Cuisine is seeking an experienced server for the busy weekend shift.', 1);
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `lastname`, `firstname`, `emailaddress`, `phone_no`, `username`, `password`) VALUES
-(1, 'Administrator', 'System', 'sysadmin@recruit.com', '5555555555', '123', '123');
+(1, 'Administrator', 'System', 'sysadmin@recruit.com', '5555555555', '123', '123'),
+(2, 'Donnelly', 'Dan', 'dan@recruitats.com', '5555555555', 'drd413', 'password');
 
 --
 -- Indexes for dumped tables
@@ -95,13 +97,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `jobpostings`
 --
 ALTER TABLE `jobpostings`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

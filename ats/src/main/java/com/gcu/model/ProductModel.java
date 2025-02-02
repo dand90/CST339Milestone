@@ -27,7 +27,7 @@ public class ProductModel {
 	private String jobDesc;
 	private Long users_id;
 
-	// Product model default constructor.
+	// ProductModel constructor
 	public ProductModel(Long id, String jobPosting, String employerName, float salaryHr, int openingsNo, String jobDesc, Long users_id) {
 		this.id = id;
 		this.jobPosting = jobPosting;
@@ -37,10 +37,11 @@ public class ProductModel {
 		this.jobDesc = jobDesc;
 		this.users_id = users_id;
 	}
+
+	//Default Construcotr for ProductModel
 	public ProductModel() {
-		//TODO Auto-generated constructor stub
 	}
-	// Getters and setters for product model.
+	// Getters and setters for ProductModel
 	public Long getId() {
 		return id;
 	}

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.gcu.model.ProductModel;
 import com.gcu.services.ProductBusinessService;
 
+//ProductController class maps /products and returns products
 @Controller
 public class ProductController {
 

@@ -1,11 +1,13 @@
 package com.gcu.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.gcu.business.UserRegistrationService;
 import com.gcu.model.LoginModel;
 import com.gcu.model.UserModel;
 
@@ -13,6 +15,9 @@ import javax.validation.Valid;
 
 @Controller
 public class RegisterController {
+
+	@Autowired
+	private UserRegistrationService registrationService;
 
     //Controller for the register page
 	@GetMapping("/register")
@@ -33,8 +38,15 @@ public class RegisterController {
 			model.addAttribute("loginModel", new LoginModel());
 			return "register";
 		}
+		//calls registerUser from UserRegistrationService to create new user
+		if (registrationService.registerUser(userModel)) {
+			model.addAttribute("title", "Registration Successful");
+			return "reLogin";
+		}
+		else {
 		
 		model.addAttribute("title", "return");
-		return "reLogin";	
+		return "register";	
+		}
 	}
 }
