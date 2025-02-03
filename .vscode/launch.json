@@ -23,6 +23,16 @@
             "request": "launch",
             "mainClass": "com.gcu.ats.AtsApplication",
             "projectName": "ats"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RecruitATSApplication<Topic2-x>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.gcu.RecruitATSApplication",
+            "projectName": "Topic2-x",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

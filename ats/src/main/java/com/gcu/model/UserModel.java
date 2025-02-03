@@ -20,7 +20,8 @@ public class UserModel {
 	private String email;
 	
 	@NotNull(message="Phone number must be filled out")
-	private int pNumber;
+	@Size(min=10, max=11, message="Phone Number must be between 10 and 11 characters")
+	private String pNumber;
 	
 	@NotNull(message="Username must be filled out")
 	@Size(min=1, max=32, message="Username must be between 1 and 32 characters")
@@ -30,7 +31,7 @@ public class UserModel {
 	private String password;
 
 	//user model constructor
-	public UserModel(String fName, String lName, String email, int pNumber, String username, String password) {
+	public UserModel(String fName, String lName, String email, String pNumber, String username, String password) {
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
@@ -96,14 +97,14 @@ public class UserModel {
 	/**
 	 * @return the pNumber
 	 */
-	public int getpNumber() {
+	public String getpNumber() {
 		return pNumber;
 	}
 
 	/**
 	 * @param pNumber the pNumber to set
 	 */
-	public void setpNumber(int pNumber) {
+	public void setpNumber(String pNumber) {
 		this.pNumber = pNumber;
 	}
 
