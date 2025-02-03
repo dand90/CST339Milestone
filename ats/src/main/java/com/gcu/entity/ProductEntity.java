@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+//ProductEntity class maps the Id and column variable to the table
 @Table("jobpostings")
 public class ProductEntity {
     @Id
@@ -27,6 +28,7 @@ public class ProductEntity {
     @Column("users_id")
     long users_id;
 
+    //Getters and setters
     public long getId() {
         return id;
     }
@@ -83,6 +85,7 @@ public class ProductEntity {
         this.users_id = users_id;
     }
 
+    //Constructor for ProductEntity
     public ProductEntity(long id, String jobPosting, String employerName, float salaryHr, int openingsNo, String jobDesc, long users_id) {
         this.id = id;
         this.jobPosting = jobPosting;
@@ -93,6 +96,7 @@ public class ProductEntity {
         this.users_id = users_id;
     }
 
+    //Default constructor for ProductEntity
     public ProductEntity() {
     }
 

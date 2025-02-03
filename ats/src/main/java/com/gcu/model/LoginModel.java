@@ -3,6 +3,8 @@ package com.gcu.model;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+//LoginModel class used by LoginController
 public class LoginModel {
 	@NotNull(message="Username is a required field")
 	@Size(min=1, max=32, message="Username must be between 1 and 32 characters")

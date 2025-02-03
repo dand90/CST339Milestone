@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.gcu.entity.ProductEntity;
 import com.gcu.repository.ProductRepository;
 
+//ProductDataService implements DataAccessInterface for CRUD operations
 @Service
 public class ProductDataService implements DataAccessInterface<ProductEntity> {
 
@@ -19,6 +20,7 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
         this.productsRepository = productsRepository;
     }
     
+    // findAll selects all products in jobpostings table
     @Override
     public List<ProductEntity> findAll() {
        List<ProductEntity> products = new ArrayList<>();
@@ -34,11 +36,13 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
        return products;
     }
 
+    // findById selects products containing a matching ID (WIP)
     @Override
     public ProductEntity findById(int id) {
        return null;
     }
 
+    //Create inserts a new product into the table
     @Override
     public boolean create(ProductEntity product) {
         try {
@@ -50,11 +54,13 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
         return true;
     }
 
+    //Update (WIP)
     @Override
     public boolean update(ProductEntity t) {
         return true;
     }
 
+    //Delete (WIP)
     @Override
     public boolean delete(ProductEntity t) {
         return true;
