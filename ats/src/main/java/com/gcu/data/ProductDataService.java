@@ -36,10 +36,16 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
        return products;
     }
 
-    // findById selects products containing a matching ID (WIP)
+    // findById selects products containing a matching ID
     @Override
     public ProductEntity findById(int id) {
-       return null;
+        try {
+            // Find by ID using the repository
+            return productsRepository.findById((long) id).orElse(null);  // Convert 'id' to 'Long'
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;  // Return null if something goes wrong
+        }
     }
 
     //Create inserts a new product into the table

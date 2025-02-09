@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Posting Details</title>
+</head>
+<body>
+    <h1>Job Posting Details</h1>
+    <div th:if="${product != null}">
+        <h3>Job Posting: <span th:text="${product.jobPosting}"></span></h3>
+        <p>Employer: <span th:text="${product.employerName}"></span></p>
+        <p>Hourly Salary: <span th:text="${product.salaryHr}"></span></p>
+        <p>Openings: <span th:text="${product.openingsNo}"></span></p>
+        <p>Description: <span th:text="${product.jobDesc}"></span></p>
+    </div>
+    <div th:if="${product == null}">
+        <p th:text="${error}"></p>
+    </div>
+    <a href="/products">Back to Product Listings</a>
+</body>
+</html>
