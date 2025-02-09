@@ -55,6 +55,24 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
         }
     }
 
+    @Override
+    public ProductModel getProductById(int id) {
+        ProductEntity productEntity = service.findById(id);
+        if (productEntity != null) {
+            return new ProductModel(
+                productEntity.getId(),
+                productEntity.getJobPosting(),
+                productEntity.getEmployerName(),
+                productEntity.getSalaryHr(),
+                productEntity.getOpeningsNo(),
+                productEntity.getJobDesc(),
+                productEntity.getUsers_Id()
+            );
+        } else {
+            return null;
+        }
+    }
+
     
 
     

@@ -52,11 +52,22 @@
 					<td style="text-align:center" colspan="4">No Job Listings</td>
 				</tr>
 				<tr style="border:0.1em solid gray;" th:each="product : ${products}">
+                    <td class="text-center">
+                        <a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.jobPosting}"></a>
+                    </td>
 					<td style="text-align:center"><h5 th:text="${product.jobPosting}">0000000001</h5></td>
 					<td style="text-align:center"><h5 th:text="${product.employerName}">Product 1</h5></td>
 					<td style="text-align:center"><h5 th:text="${product.salaryHr}">1.0</h5></td>
 					<td style="text-align:center"><h5 th:text="${product.openingsNo}">1</h5></td>
-				</tr>
+                    <td class="text-center">
+                        <form th:action="@{/editPosting/{id}(id=${product.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn">Edit</button>    
+                        </form>
+                        <form th:action="@{/deletePosting/{id}(id=${product.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
 			</tbody>
 		</table>
 		<a href="/newPosting/" target="_blank">Create a New Job Posting</a>

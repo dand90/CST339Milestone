@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.gcu.model.ProductModel;
 import com.gcu.services.ProductBusinessService;
@@ -27,5 +28,18 @@ public class ProductController {
 		model.addAttribute("products", products);
 
         return "products";
+    }
+
+    @GetMapping("/products/{id}")
+    public String getProductById(@PathVariable("id") int id, Model model) {
+        ProductModel product = service.getProductById(id);
+
+        if (product != null) {
+            model.addAttribute("product", product);
+        } else {
+            model.addAttribute("error", "Posting not found");
+        }
+
+        return "postingDetails";  // The view for displaying the product detail
     }
 }
