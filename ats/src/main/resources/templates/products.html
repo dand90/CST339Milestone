@@ -60,7 +60,7 @@
 					<td style="text-align:center"><h5 th:text="${product.salaryHr}">1.0</h5></td>
 					<td style="text-align:center"><h5 th:text="${product.openingsNo}">1</h5></td>
                     <td class="text-center">
-                        <form th:action="@{/editPosting/{id}(id=${product.id})}" method="post" style="display:inline;">
+                        <form th:action="@{/editPosting/{id}(id=${product.id})}" method="get" style="display:inline;">
                             <button type="submit" class="btn">Edit</button>    
                         </form>
                         <form th:action="@{/deletePosting/{id}(id=${product.id})}" method="post" style="display:inline;">

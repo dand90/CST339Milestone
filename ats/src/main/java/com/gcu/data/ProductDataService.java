@@ -44,7 +44,7 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
             return productsRepository.findById((long) id).orElse(null);  // Convert 'id' to 'Long'
         } catch (Exception e) {
             e.printStackTrace();
-            return null;  // Return null if something goes wrong
+            return null;  
         }
     }
 
@@ -60,17 +60,23 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
         return true;
     }
 
-    //Update (WIP)
+    //Update updates a product in the table
     @Override
-    public boolean update(ProductEntity t) {
-        return true;
+    public boolean update(ProductEntity product) {
+        try {
+            productsRepository.save(product);  
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    //Delete 
+    //Delete removes a row from the table
     @Override
     public boolean delete(ProductEntity product) {
         try {
-            productsRepository.delete(product);  // Use the repository's delete method
+            productsRepository.delete(product); 
             return true;
         } catch (Exception e) {
             e.printStackTrace();

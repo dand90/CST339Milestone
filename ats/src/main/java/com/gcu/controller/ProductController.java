@@ -19,7 +19,7 @@ public class ProductController {
     @Autowired
     ProductBusinessService service;
 
-
+    //Get Products: view the products (job listings)
     @GetMapping("/products")
     public String getAllProducts(Model model) {
 
@@ -31,6 +31,7 @@ public class ProductController {
         return "products";
     }
 
+    //GET product by ID: user can click a product to view details and applications
     @GetMapping("/products/{id}")
     public String getProductById(@PathVariable("id") int id, Model model) {
         ProductModel product = service.getProductById(id);
@@ -44,9 +45,30 @@ public class ProductController {
         return "postingDetails";  // The view for displaying the product detail
     }
 
+    //POST delete a posting: deletes a filled or no longer needed job posting
     @PostMapping("/deletePosting/{id}")
     public String deleteProduct(@PathVariable("id") int id) {
-        service.deleteProduct(id); // Call the service to handle product deletion
-        return "redirect:/products"; // Redirect back to the products list after deletion
+        service.deleteProduct(id); 
+        return "redirect:/products"; 
+    }
+
+    //GET edit posting: gets the posting by id and allows the user to edit posting details
+    @GetMapping("/editPosting/{id}")
+    public String editProduct(@PathVariable("id") int id, Model model) {
+        ProductModel product = service.getProductById(id);
+        if (product != null) {
+            model.addAttribute("product", product);
+            return "editPosting"; 
+        } else {
+            model.addAttribute("error", "Product not found");
+            return "products"; 
+        }
+    }
+
+    // POST update posting: posts the updated posting
+    @PostMapping("/updatePosting/{id}")
+    public String updateProduct(@PathVariable("id") int id, ProductModel updatedProduct) {
+        service.updateProduct(id, updatedProduct); 
+        return "redirect:/products"; 
     }
 }
