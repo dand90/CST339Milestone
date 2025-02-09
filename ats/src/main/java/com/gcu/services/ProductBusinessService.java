@@ -73,7 +73,12 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
         }
     }
 
-    
+    public void deleteProduct(int id) {
+        ProductEntity productEntity = service.findById(id);  // Find product by ID
+        if (productEntity != null) {
+            service.delete(productEntity);  // Delete the product
+        }
+    }
 
     
 

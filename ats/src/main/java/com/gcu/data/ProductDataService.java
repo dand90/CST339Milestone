@@ -66,10 +66,16 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
         return true;
     }
 
-    //Delete (WIP)
+    //Delete 
     @Override
-    public boolean delete(ProductEntity t) {
-        return true;
+    public boolean delete(ProductEntity product) {
+        try {
+            productsRepository.delete(product);  // Use the repository's delete method
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }
