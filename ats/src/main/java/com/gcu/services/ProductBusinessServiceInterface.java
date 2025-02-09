@@ -11,4 +11,5 @@ public interface ProductBusinessServiceInterface {
 
     public List<ProductModel> addProduct(ProductModel productModel);
     
+    public ProductModel getProductById(int id);
 }
