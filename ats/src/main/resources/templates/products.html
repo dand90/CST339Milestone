@@ -61,9 +61,6 @@
                     <form th:action="@{/applicants/{id}/product(id=${product.id})}" method="get" style="display:inline;">
                             <button type="submit" class="btn">View Job Applicants</button>   
                         </form>
-                        <form th:action="@{/editPosting/{id}(id=${product.id})}" method="get" style="display:inline;">
-                            <button type="submit" class="btn">Edit</button>    
-                        </form>
                         <form th:action="@{/deletePosting/{id}(id=${product.id})}" method="post" style="display:inline;">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>

@@ -85,7 +85,11 @@
         <div th:if="${product == null}">
             <p th:text="${error}"></p>
         </div>
-
+        <div>
+        <form th:action="@{/editPosting/{id}(id=${product.id})}" method="get" style="display:inline;">
+            <button type="submit" class="btn">Edit</button>    
+        </form>
+        </div>
         <a href="/products">Back to Product Listings</a>
     </div>
 </body>
