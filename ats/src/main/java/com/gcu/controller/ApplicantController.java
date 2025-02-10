@@ -41,7 +41,7 @@ public class ApplicantController
             return "error";  // Redirect to an error page if applicant is not found
         }
     }
-    @GetMapping("/products/{id}/applicants")
+    @GetMapping("/applicants/{id}/product")
     public String getJobDetails(@PathVariable("id") Long jobId, Model model) {
         // Retrieve applicants for this jobPosting_id
         List<ApplicantModel> applicants = service.getApplicantsByJobPosting(jobId);
