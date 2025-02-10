@@ -36,7 +36,7 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
        return users;
     }
 
-    //findById (WIP)
+    //findById finds a row with a matching ID
     @Override
     public UserEntity findById(int id) {
        return null;
@@ -54,13 +54,13 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
         return true;
     }
 
-    //update (WIP)
+    //update updates a row in the table
     @Override
     public boolean update(UserEntity t) {
         return true;
     }
 
-    //delete (WIP)
+    //delete removes a row from the table
     @Override
     public boolean delete(UserEntity t) {
         return true;

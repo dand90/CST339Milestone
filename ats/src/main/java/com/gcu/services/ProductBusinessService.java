@@ -31,10 +31,9 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
         return productsDomain;
     }
 
-    // addProduct Method: sets ProductEntity to ProductModel
+    // addProduct Method: sets ProductEntity to ProductModel and returns a boolean if the new product is created
     @Override
     public List<ProductModel> addProduct(ProductModel productModel) {
-        // Map the ProductModel to ProductEntity
         ProductEntity productEntity = new ProductEntity();
         productEntity.setJobPosting(productModel.getJobPosting());
         productEntity.setEmployerName(productModel.getEmployerName());
@@ -43,18 +42,16 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
         productEntity.setJobDesc(productModel.getJobDesc());
         productEntity.setUsers_Id(1L); // Set users_id to 1 for testing purposes
         
-        // Save the entity using ProductDataService
         boolean success = service.create(productEntity);
-        
-        // If creation is successful, return the updated list of products
+    
         if (success) {
-            return getProducts();  // Fetch and return the updated list of products
+            return getProducts();  
         } else {
-            // return previous list upon failure
             return new ArrayList<>();
         }
     }
 
+    //getProductById method: finds a row by id and maps the values to productEntity
     @Override
     public ProductModel getProductById(int id) {
         ProductEntity productEntity = service.findById(id);
@@ -73,8 +70,28 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
         }
     }
 
-    
+    //DeleteProduct method finds the row by Id and deletes the product mapped to the product entity
+    public void deleteProduct(int id) {
+        ProductEntity productEntity = service.findById(id);  
+        if (productEntity != null) {
+            service.delete(productEntity);  // Delete the product
+        }
+    }
 
-    
+    //UpdateProduct method maps values to the product entity from product model and saves the update
+    public void updateProduct(int id, ProductModel updatedProduct) {
+        ProductEntity productEntity = service.findById(id); 
+        if (productEntity != null) {
+           
+            productEntity.setJobPosting(updatedProduct.getJobPosting());
+            productEntity.setEmployerName(updatedProduct.getEmployerName());
+            productEntity.setSalaryHr(updatedProduct.getSalaryHr());
+            productEntity.setOpeningsNo(updatedProduct.getOpeningsNo());
+            productEntity.setJobDesc(updatedProduct.getJobDesc());
+            
+           
+            service.update(productEntity);
+        }
+    }
 
 }

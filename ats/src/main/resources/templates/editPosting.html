@@ -1,14 +1,34 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
-        <div layout:fragment="content">
-			<form th:action="@{/doUpdate}" th:object="${productModel}" method="post">
-					
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+	<body>
+		<div layout:fragment="content">
+			<h2>Edit Job Posting</h2>
+			<form th:action="@{/updatePosting/{id}(id=${product.id})}" th:object="${product}" method="post">
+				<div>
+					<label for="jobPosting">Job Posting Title</label>
+					<input type="text" id="jobPosting" th:field="*{jobPosting}" placeholder="Enter Job Posting Title" />
+				</div>
+				<div>
+					<label for="employerName">Employer Name</label>
+					<input type="text" id="employerName" th:field="*{employerName}" placeholder="Enter Employer Name" />
+				</div>
+				<div>
+					<label for="salaryHr">Hourly Salary</label>
+					<input type="number" id="salaryHr" th:field="*{salaryHr}" placeholder="Enter Hourly Salary" />
+				</div>
+				<div>
+					<label for="openingsNo">Number of Openings</label>
+					<input type="number" id="openingsNo" th:field="*{openingsNo}" placeholder="Enter Number of Openings" />
+				</div>
+				<div>
+					<label for="jobDesc">Job Description</label>
+					<textarea id="jobDesc" th:field="*{jobDesc}" placeholder="Enter Job Description"></textarea>
+				</div>
+				<div>
+					<button type="submit">Save Changes</button>
+				</div>
 			</form>
+			<a href="/products">Cancel</a>
 		</div>
-    </body>
+	</body>
 </html>
