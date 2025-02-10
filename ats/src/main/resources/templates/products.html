@@ -1,8 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h2 class="text-center">Job Listings</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Job Posting</th>
+                        <th class="text-center">Employer Name</th>
+                        <th class="text-center">Hourly Salary</th>
+                        <th class="text-center">Openings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${products.empty}">
+                        <td class="text-center" colspan="4">No Job Listings</td>
+                    </tr>
+                    <tr th:each="product : ${products}">
+                        <td class="text-center"><h5 th:text="${product.jobPosting}"></h5></td>
+                        <td class="text-center"><h5 th:text="${product.employerName}"></h5></td>
+                        <td class="text-center"><h5 th:text="${product.salaryHr}"></h5></td>
+                        <td class="text-center"><h5 th:text="${product.openingsNo}"></h5></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
 	<body>
 		<div layout:fragment="content">
-		<table class="table table-hover" style="width:50%">
+		<table class="table table-hover" style="width:70%">
 			<thead>
 				<tr>
 					<th style="text-align:center">Job Posting</th>
@@ -24,6 +59,9 @@
 					<td style="text-align:center"><h5 th:text="${product.salaryHr}">1.0</h5></td>
 					<td style="text-align:center"><h5 th:text="${product.openingsNo}">1</h5></td>
                     <td class="text-center">
+                    <form th:action="@{/applicants/{id}/product(id=${product.id})}" method="get" style="display:inline;">
+                            <button type="submit" class="btn">View Job Applicants</button>   
+                        </form>
                         <form th:action="@{/editPosting/{id}(id=${product.id})}" method="post" style="display:inline;">
                             <button type="submit" class="btn">Edit</button>    
                         </form>
@@ -34,7 +72,7 @@
                 </tr>
 			</tbody>
 		</table>
-		<a href="/newPosting/" target="_blank">Create a New Job Posting</a>
+		<a href="/newPosting/" target="_blank">Create a New Job Posting<br/></a>
 		</div>
 		
 	</body>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Applicant Details</title>
+</head>
+<body>
+    <h1>User Details</h1>
+    <div th:if="${applicant != null}">
+        <h3>Full Name: <span th:text="${applicant.name}"></span></h3>
+        <p>Phone Number: <span th:text="${applicant.phone}"></span></p>
+        <p>History: <span th:text="${applicant.history}"></span></p>
+        <p>Skills: <span th:text="${applicant.skills}"></span></p>
+    </div>
+    <div th:if="${applicant == null}">
+        <p th:text="${error}"></p>
+    </div>
+    <form th:action="@{/applicants/{id}/product(id=${product.id})}" method="get" style="display:inline;">
+        <button type="submit" class="btn">View Job Applicants</button>   
+    </form>
+</body>
+</html>
