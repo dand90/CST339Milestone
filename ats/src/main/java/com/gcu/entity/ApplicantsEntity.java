@@ -22,7 +22,7 @@ public class ApplicantsEntity {
     @Column("skills")
     private String skills;
 
-    @Column("jobPosting_id") 
+    @Column("jobposting_id") 
     private Long jobPostingId;  
 
     // Getters and Setters
