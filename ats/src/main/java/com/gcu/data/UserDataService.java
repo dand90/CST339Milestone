@@ -36,10 +36,16 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
        return users;
     }
 
-    //findById finds a row with a matching ID
+    //findById (WIP)
     @Override
     public UserEntity findById(int id) {
-       return null;
+    	try {
+            // Find by ID using the repository
+            return usersRepository.findById((long) id).orElse(null);  // Convert 'id' to 'Long'
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;  // Return null if something goes wrong
+        }
     }
 
     //create inserts a user and returns boolean
@@ -54,13 +60,13 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
         return true;
     }
 
-    //update updates a row in the table
+    //update (WIP)
     @Override
     public boolean update(UserEntity t) {
         return true;
     }
 
-    //delete removes a row from the table
+    //delete (WIP)
     @Override
     public boolean delete(UserEntity t) {
         return true;

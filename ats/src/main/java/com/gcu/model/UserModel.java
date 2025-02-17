@@ -30,6 +30,9 @@ public class UserModel {
 	@Size(min=1, max=32, message="Password must be between 1 and 32 characters")
 	private String password;
 
+	private String fullName;
+	
+	
 	//user model constructor
 	public UserModel(String fName, String lName, String email, String pNumber, String username, String password) {
 		this.fName = fName;
@@ -38,6 +41,7 @@ public class UserModel {
 		this.pNumber = pNumber;
 		this.username = username;
 		this.password = password;
+		this.fullName = fName + " " + lName;
 		
 		
 	}
@@ -134,5 +138,25 @@ public class UserModel {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+
+
+	/**
+	 * @return the fullName
+	 */
+	public String getFullName() {
+		return fullName;
+	}
+
+
+
+
+	/**
+	 * @param fullName the fullName to set
+	 */
+	public void setFullName() {
+		this.fullName = fName + " " + lName;;
 	}
 }

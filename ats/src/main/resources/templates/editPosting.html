@@ -3,7 +3,7 @@
 	<body>
 		<div layout:fragment="content">
 			<h2>Edit Job Posting</h2>
-			<form th:action="@{/updatePosting/{id}(id=${product.id})}" th:object="${product}" method="post">
+			<form th:action="@{/updatePosting/{id}(id=${product.id})}" th:object="${product}" method="post"\>
 				<div>
 					<label for="jobPosting">Job Posting Title</label>
 					<input type="text" id="jobPosting" th:field="*{jobPosting}" placeholder="Enter Job Posting Title" />

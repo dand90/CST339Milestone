@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+</head>
+<body>
+    <h1>User Details</h1>
+    <div th:if="${user != null}">
+        <h3>Full Name: <span th:text="${user.fullName}"></span></h3>
+        <p>Username: <span th:text="${user.username}"></span></p>
+        <p>Email: <span th:text="${user.email}"></span></p>
+        <p>Phone Number: <span th:text="${user.pNumber}"></span></p>
+    </div>
+    <div th:if="${user == null}">
+        <p th:text="${error}"></p>
+    </div>
+    <a href="/products">Back to Product Listings</a>
+</body>
+</html>

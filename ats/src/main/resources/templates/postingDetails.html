@@ -54,9 +54,8 @@
                 <p><strong>Description:</strong> <span th:text="${product.jobDesc}"></span></p>
             </div>
         </div>
-        
         <!-- Resumes Table -->
-        <div class="table-container">
+       <!-- <div class="table-container">
             <h2>Applicants</h2>
             <table>
                 <thead>
@@ -84,12 +83,8 @@
 
         <div th:if="${product == null}">
             <p th:text="${error}"></p>
-        </div>
-        <div>
-        <form th:action="@{/editPosting/{id}(id=${product.id})}" method="get" style="display:inline;">
-            <button type="submit" class="btn">Edit</button>    
-        </form>
-        </div>
+        </div>-->
+        
         <a href="/products">Back to Product Listings</a>
     </div>
 </body>
