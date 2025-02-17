@@ -33,6 +33,16 @@
             "projectName": "Topic2-x",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RecruitATSApplication<RecruitATS>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.gcu.RecruitATSApplication",
+            "projectName": "RecruitATS",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

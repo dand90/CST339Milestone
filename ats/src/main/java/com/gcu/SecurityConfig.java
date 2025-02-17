@@ -7,22 +7,25 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-            .authorizeRequests()
-            .antMatchers("/", "/login/**", "/register/**").permitAll()
-            .anyMatchers().authenticated()
+        .authorizeRequests()
+            .antMatchers("/", "/login", "/reLogin", "/images/**", "/css/**", "/register").permitAll()
+            .anyRequest().authenticated()
             .and()
         .formLogin()
             .loginPage("/login")
             .usernameParameter("username")
             .passwordParameter("password")
             .permitAll()
-            .defaultSuccessUrl("/products", true)
+            .defaultSuccessUrl("/", true)
             .and()
         .logout()
             .logoutUrl("/logout")
@@ -33,9 +36,8 @@ public class SecurityConfig {
     }
 
     @Autowired
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("123").password("{noop}123").roles("USER");
-    }
-
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication()
+				.withUser("123").password("{noop}123").roles("USER");
+	}
 }
