@@ -33,7 +33,7 @@ public class NewPostingController {
 	public String doPosting(@Valid ProductModel productModel, BindingResult bindingresult, Model model) {
 		//check for errors in the new job posting form
 		if (bindingresult.hasErrors()) {
-			model.addAttribute("title", "Create a New Job Posting");;
+			model.addAttribute("title", "Create a New Job Posting");
 			return "newPosting";
 		}
 		

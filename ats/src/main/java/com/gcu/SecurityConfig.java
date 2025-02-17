@@ -15,7 +15,7 @@ import com.gcu.services.UserBusinessService;
 @Configuration
 public class SecurityConfig {
 
-    private final UserBusinessService userBusinessService; // ✅ Inject Correct Service
+    private final UserBusinessService userBusinessService; 
 
     public SecurityConfig(UserBusinessService userBusinessService) {
         this.userBusinessService = userBusinessService;
@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .and()
             .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/products/display", true)
+                .defaultSuccessUrl("/products", true)
                 .permitAll()
                 .and()
             .logout()

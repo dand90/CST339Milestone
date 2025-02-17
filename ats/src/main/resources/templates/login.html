@@ -40,7 +40,6 @@
                         <strong>Login Form</strong>
                     </div>
                     <div class="panel-body">
-                        <!-- ✅ Make sure this form action is correct -->
                         <form th:action="@{/login}" method="post">
                             <div class="form-group">
                                 <label>User Name:</label>
@@ -53,7 +52,7 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Login</button>
                             </div>
-                            <!-- ✅ Error message if login fails -->
+                            <!-- Error message if login fails -->
                             <div th:if="${param.error}">
                                 <p class="text-danger text-center">Invalid username or password.</p>
                             </div>

@@ -36,7 +36,7 @@ public class UserBusinessService implements UserDetailsService {
             .build();
     }
 
-    // Save user without hashing
+    // Save user
     public void saveUser(UserEntity user) {
         repository.save(user); // Save password as plain text
     }
