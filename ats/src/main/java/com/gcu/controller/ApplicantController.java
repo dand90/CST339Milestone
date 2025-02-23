@@ -30,7 +30,7 @@ public class ApplicantController
 
     // Maps to "/applicants/{id}" and retrieves a specific applicant by ID
     @GetMapping("/applicants/{id}")
-    public String getApplicantById(@PathVariable("id") int id, Model model) {
+    public String getApplicantById(@PathVariable("id") String id, Model model) {
         ApplicantModel applicant = service.getApplicantById(id);
         
         if (applicant != null) {
@@ -42,7 +42,7 @@ public class ApplicantController
         }
     }
     @GetMapping("/applicants/{id}/product")
-    public String getJobDetails(@PathVariable("id") Long jobId, Model model) {
+    public String getJobDetails(@PathVariable("id") String jobId, Model model) {
         // Retrieve applicants for this jobPosting_id
         List<ApplicantModel> applicants = service.getApplicantsByJobPosting(jobId);
     
