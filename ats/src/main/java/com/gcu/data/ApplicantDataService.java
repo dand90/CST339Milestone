@@ -32,9 +32,9 @@ public class ApplicantDataService implements ApplicantDataServiceInterface {
     }
 
     @Override
-    public ApplicantsEntity findById(int id) {
+    public ApplicantsEntity findById(String id) {
         try {
-            return applicantsRepository.findById((long) id).orElse(null);
+            return applicantsRepository.findById(id).orElse(null);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -81,7 +81,7 @@ public class ApplicantDataService implements ApplicantDataServiceInterface {
     }
 
     @Override
-    public List<ApplicantsEntity> getApplicantsByJobPostingId(Long jobPostingId) {
+    public List<ApplicantsEntity> getApplicantsByJobPostingId(String jobPostingId) {
         try {
             List<ApplicantsEntity> applicants = applicantsRepository.findByJobPostingId(jobPostingId);
             
