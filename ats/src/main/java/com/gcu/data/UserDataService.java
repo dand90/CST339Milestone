@@ -35,6 +35,16 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
        }
        return users;
     }
+    //findByUsername selects a user by username
+public UserEntity findByUsername(String username) {
+    try {
+        return usersRepository.findByUsername(username);
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+
 
     //findById (WIP)
     @Override
