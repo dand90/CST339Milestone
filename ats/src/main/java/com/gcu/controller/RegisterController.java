@@ -35,7 +35,7 @@ public class RegisterController {
 		//check for errors in the register form
 		if (bindingresult.hasErrors()) {
 			model.addAttribute("title", "Register");
-			model.addAttribute("loginModel", new LoginModel());
+			model.addAttribute("loginModel", new UserModel());
 			return "register";
 		}
 		//calls registerUser from UserRegistrationService to create new user
