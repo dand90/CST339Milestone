@@ -38,10 +38,10 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
 
     // findById selects products containing a matching ID
     @Override
-    public ProductEntity findById(int id) {
+    public ProductEntity findById(String id) {
         try {
             // Find by ID using the repository
-            return productsRepository.findById((long) id).orElse(null);  // Convert 'id' to 'Long'
+            return productsRepository.findById(id).orElse(null);  // Convert 'id' to 'Long'
         } catch (Exception e) {
             e.printStackTrace();
             return null;  
