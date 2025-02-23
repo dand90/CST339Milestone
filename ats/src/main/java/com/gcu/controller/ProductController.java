@@ -33,7 +33,7 @@ public class ProductController {
 
     //GET product by ID: user can click a product to view details and applications
     @GetMapping("/products/{id}")
-    public String getProductById(@PathVariable("id") int id, Model model) {
+    public String getProductById(@PathVariable("id") String id, Model model) {
         ProductModel product = service.getProductById(id);
 
         if (product != null) {
@@ -47,14 +47,14 @@ public class ProductController {
 
     //POST delete a posting: deletes a filled or no longer needed job posting
     @PostMapping("/deletePosting/{id}")
-    public String deleteProduct(@PathVariable("id") int id) {
+    public String deleteProduct(@PathVariable("id") String id) {
         service.deleteProduct(id); 
         return "redirect:/products"; 
     }
 
     //GET edit posting: gets the posting by id and allows the user to edit posting details
     @GetMapping("/editPosting/{id}")
-    public String editProduct(@PathVariable("id") int id, Model model) {
+    public String editProduct(@PathVariable("id") String id, Model model) {
         ProductModel product = service.getProductById(id);
         if (product != null) {
             model.addAttribute("product", product);
@@ -67,7 +67,7 @@ public class ProductController {
 
     // POST update posting: posts the updated posting
     @PostMapping("/updatePosting/{id}")
-    public String updateProduct(@PathVariable("id") int id, ProductModel updatedProduct) {
+    public String updateProduct(@PathVariable("id") String id, ProductModel updatedProduct) {
         service.updateProduct(id, updatedProduct); 
         return "redirect:/products"; 
     }
