@@ -3,7 +3,7 @@ package com.gcu.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gcu.data.UserDataService;
+import com.gcu.data.UsersDataService;
 import com.gcu.entity.UserEntity;
 import com.gcu.model.UserModel;
 
@@ -12,7 +12,7 @@ import com.gcu.model.UserModel;
 public class UserRegistrationService implements OrdersBusinessInterface{
 
     @Autowired
-    private UserDataService userDataService;
+    private UsersDataService userDataService;
 
     //RegisterUser method: creates a newUser UserEntity and takes UserModel as a parameter, returns call to create method from userDataService 
     public boolean registerUser(UserModel userModel) {
