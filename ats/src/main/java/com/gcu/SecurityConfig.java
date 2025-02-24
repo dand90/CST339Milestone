@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
             .and()   
             .authorizeRequests()
             .antMatchers("/", "/index", "/login", "/register", "/reLogin", "/css/**", "/js/**", "/images/**").permitAll() // Public pages
-            .antMatchers("/products/**", "/applicants/**", "/editposting/**", "/jobDetails/**", "/newPosting/**", "/postingDetails/**", "/resumeDetails/**", "/userDetails/**", "/userList/**").authenticated() // Secure pages
+            .antMatchers("/products/**", "/service/products", "/applicants/**", "/editposting/**", "/jobDetails/**", "/newPosting/**", "/postingDetails/**", "/resumeDetails/**", "/userDetails/**", "/userList/**", "service/product/**").authenticated() // Secure pages
             .anyRequest().authenticated()
             .and()
         .formLogin()
