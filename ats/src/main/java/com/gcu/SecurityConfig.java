@@ -8,14 +8,28 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 import com.gcu.services.UserBusinessService;
+/**
+ * Security class for the application
+ * 
+ * Sets up HTTp for authentication
+ * 
+ */
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
+    /**
+    * service used for user operations
+    */
     @Autowired
     private UserBusinessService userBusinessService;
-
+    
+    /**
+    * 
+    * @param http The HttpSecurity object to configure.
+    * @throws Exception If there is an error during configuration.
+    */
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
@@ -44,6 +58,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
             .permitAll()
             .logoutSuccessUrl("/");
     }
+    /**
+    *Configures user details and password encoding. 
+    *
+    * @param auth The AuthenticationManagerBuilder to configure.
+    * @throws Exception If there is an error during configuration.
+     */
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception

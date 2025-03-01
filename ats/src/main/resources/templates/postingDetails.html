@@ -4,88 +4,45 @@
     <meta charset="UTF-8">
     <title>Job Posting Details</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-        .job-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f8f9fa;
-            padding: 20px;
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+        body {
+            background: linear-gradient(to right, #a3c3f4, #e2e9f0);
+            color: black;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
         }
-        .job-details div {
-            flex: 1;
-            padding: 10px;
+        .btn-primary {
+            background-color: #2575fc;
+            border-color: #1a5fd1;
         }
-        .table-container {
-            margin-top: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
+        .btn-primary:hover {
+            background-color: #1a5fd1;
         }
     </style>
 </head>
 <body>
     <h1 class="text-center">Job Posting Details</h1>
     <div class="container">
-        <div class="job-details">
-            <div>
-                <h3>Job Posting: <span th:text="${product.jobPosting}"></span></h3>
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Job Posting: <span th:text="${product.jobPosting}"></span></h3>
                 <p><strong>Employer:</strong> <span th:text="${product.employerName}"></span></p>
-            </div>
-            <div>
-                <p><strong>Hourly Salary:</strong> <span th:text="${product.salaryHr}"></span></p>
+                <p><strong>Hourly Salary:</strong> $<span th:text="${product.salaryHr}"></span></p>
                 <p><strong>Openings:</strong> <span th:text="${product.openingsNo}"></span></p>
-            </div>
-            <div>
                 <p><strong>Description:</strong> <span th:text="${product.jobDesc}"></span></p>
+                <a href="/products" class="btn btn-primary">Back to Job Listings</a>
             </div>
         </div>
-        <!-- Resumes Table -->
-       <!-- <div class="table-container">
-            <h2>Applicants</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>History</th>
-                        <th>Skills</th>
-                        <th>Resume</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="applicant : ${applicants}">
-                        <td th:text="${applicant.name}"></td>
-                        <td th:text="${applicant.phone}"></td>
-                        <th th:text="${applicant.history}"></th>
-                        <td th:text="${applicant.skills}"></td>
-                        <td>
-                            <a th:href="@{/applicants/{id}(id=${applicant.id})}">View Resume</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div th:if="${product == null}">
-            <p th:text="${error}"></p>
-        </div>-->
-        
-        <a href="/products">Back to Product Listings</a>
     </div>
 </body>
 </html>

@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gcu.model.ProductModel;
 
+/*
+ * Rest controller for endpoints and retrieving product info
+ * for APIs of one or all products
+ * 
+ */
 @RestController
 @RequestMapping("/service")
 public class ProductRestService {
@@ -17,7 +22,12 @@ public class ProductRestService {
     @Autowired
     private ProductBusinessService productService;
 
-    // Return a single product by ID
+    /*
+    * Return a single product by ID
+    *
+    * @param id of product
+    * @return product if found error if not for server or not existant
+    */ 
     @GetMapping("/product/{id}")
     public ResponseEntity<ProductModel> getProductById(@PathVariable("id") int id) {
         try {
@@ -32,7 +42,12 @@ public class ProductRestService {
         }
         
     }
-    // Return all products
+    /*
+     * // Return all products
+     * 
+     * @return list of all products and errors if occuring with server
+     */
+    
     @GetMapping("/products")
         public ResponseEntity<?> getAllProducts() {
         try {

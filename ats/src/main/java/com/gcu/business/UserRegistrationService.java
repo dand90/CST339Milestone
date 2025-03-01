@@ -7,14 +7,23 @@ import com.gcu.data.UserDataService;
 import com.gcu.entity.UserEntity;
 import com.gcu.model.UserModel;
 
-//User RegistrationService implements OrdersBusiness Interface
+/*
+ * User RegistrationService implements OrdersBusiness Interface
+ * 
+ * 
+ */
 @Service
 public class UserRegistrationService implements OrdersBusinessInterface{
 
     @Autowired
     private UserDataService userDataService;
 
-    //RegisterUser method: creates a newUser UserEntity and takes UserModel as a parameter, returns call to create method from userDataService 
+    /*
+     * RegisterUser method: creates a newUser UserEntity and takes UserModel as a parameter, returns call to create method from userDataService 
+     * 
+     * @param userModel with registration details
+     * @return user is created, false if not.
+     */
     public boolean registerUser(UserModel userModel) {
         UserEntity newUser = new UserEntity();
         newUser.setlName(userModel.getlName());
@@ -27,7 +36,13 @@ public class UserRegistrationService implements OrdersBusinessInterface{
         return userDataService.create(newUser);
     }
 
-    //Authenticate method compares username and password entered to user in UserEntity (returns a boolean for LoginController)
+    /*
+     * Authenticate method compares username and password entered to user in UserEntity (returns a boolean for LoginController)
+     * 
+     * @param username entered by user
+     * @param password entered by password
+     * @return true is authenticated, false if not 
+     */
     @Override
     public boolean authenticate(String username, String password) {
         UserEntity user = userDataService.findAll().stream().filter(u -> u.getUsername().equals(username)).findFirst().orElse(null);

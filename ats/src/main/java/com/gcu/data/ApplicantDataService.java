@@ -8,17 +8,25 @@ import org.springframework.stereotype.Service;
 
 import com.gcu.entity.ApplicantsEntity;
 import com.gcu.repository.ApplicantsRepository;
-
+/*
+ * Service class with ApplicantDataServiceInterface for managing applicants
+ */
 @Service
 public class ApplicantDataService implements ApplicantDataServiceInterface {
     
     @Autowired
     private ApplicantsRepository applicantsRepository;
-
+    /*
+     * Constructor to start repository
+     * @param repository for accessing applicant data
+     */
     public ApplicantDataService(ApplicantsRepository applicantsRepository) {
         this.applicantsRepository = applicantsRepository;
     }
-
+    /*
+     * Retrieves all applicants 
+     * @return a list of applicant objects
+     */
     @Override
     public List<ApplicantsEntity> findAll() {
         List<ApplicantsEntity> applicants = new ArrayList<>();
@@ -30,7 +38,12 @@ public class ApplicantDataService implements ApplicantDataServiceInterface {
         }
         return applicants;
     }
-
+    /*
+     * Finds applicant by id
+     * 
+     * @param id of applicant
+     * @return object if found, otherwise null
+     */
     @Override
     public ApplicantsEntity findById(int id) {
         try {
@@ -40,7 +53,12 @@ public class ApplicantDataService implements ApplicantDataServiceInterface {
             return null;
         }
     }
-
+    /*
+     * Creates new applicant
+     * 
+     * @param new applicant
+     * @return true if created, false if not 
+     */
     @Override
     public boolean create(ApplicantsEntity applicant) {
         try {
@@ -51,7 +69,12 @@ public class ApplicantDataService implements ApplicantDataServiceInterface {
             return false;
         }
     }
-
+    /*
+     * Update existing applicant
+     * 
+     * @param new applicant object details
+     * @return true if updated, false if not
+     */
     @Override
     public boolean update(ApplicantsEntity applicant) {
         try {
@@ -65,7 +88,12 @@ public class ApplicantDataService implements ApplicantDataServiceInterface {
             return false;
         }
     }
-
+    /*
+     * Deletes applicant
+     * 
+     * @param applicant object
+     * @return true if deleted, false if not.
+     */
     @Override
     public boolean delete(ApplicantsEntity applicant) {
         try {
@@ -79,7 +107,12 @@ public class ApplicantDataService implements ApplicantDataServiceInterface {
             return false;
         }
     }
-
+    /*
+     * Gets list of applicant for specific job
+     * 
+     * @param job posting id
+     * @return list of applicant objects
+     */
     @Override
     public List<ApplicantsEntity> getApplicantsByJobPostingId(Long jobPostingId) {
         try {

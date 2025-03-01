@@ -11,13 +11,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.gcu.model.ApplicantModel;
 import com.gcu.services.ApplicantBusinessServiceInterface;
 
+/*
+ * Controller for handlng applicant requests
+ */
 @Controller
 public class ApplicantController 
 {
      @Autowired
     private ApplicantBusinessServiceInterface service;
 
-    // Maps to "/applicants" and retrieves all applicants
+    /*
+     * Maps to "/applicants" and retrieves all applicants
+     * 
+     * @param model object to pass to view
+     * @return name of applicants view
+     */
     @GetMapping("/applicants")
     public String getAllApplicants(Model model) {
         List<ApplicantModel> applicants = service.getApplicants();
@@ -28,7 +36,13 @@ public class ApplicantController
         return "applicants";  // View displaying the list of applicants
     }
 
-    // Maps to "/applicants/{id}" and retrieves a specific applicant by ID
+    /*
+     * Maps to "/applicants/{id}" and retrieves a specific applicant by ID
+     * 
+     * @param id of applicant
+     * @param model object passed to view
+     * @return resume details view
+     */
     @GetMapping("/applicants/{id}")
     public String getApplicantById(@PathVariable("id") int id, Model model) {
         ApplicantModel applicant = service.getApplicantById(id);
@@ -41,6 +55,13 @@ public class ApplicantController
             return "error";  // Redirect to an error page if applicant is not found
         }
     }
+    /*
+     * Retrieve view of details for specified job
+     * 
+     * @param id of job posting
+     * @param model object to pass to view
+     * @return job details view
+     */
     @GetMapping("/applicants/{id}/product")
     public String getJobDetails(@PathVariable("id") Long jobId, Model model) {
         // Retrieve applicants for this jobPosting_id

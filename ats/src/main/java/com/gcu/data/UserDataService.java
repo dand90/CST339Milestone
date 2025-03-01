@@ -8,19 +8,31 @@ import org.springframework.stereotype.Service;
 
 import com.gcu.entity.UserEntity;
 import com.gcu.repository.UserRepository;
-
+/*
+ * CRUD operatons for user Entity objects
+ * uses user repository to interact with database
+ */
 //UserDataService implements DataAccessInterface for CRUD Operations, mapped to UserRepository
 @Service
 public class UserDataService implements DataAccessInterface<UserEntity> {
 
+    /*
+     * repository for accessing user related data
+     */
     @Autowired
     private UserRepository usersRepository;
 
+    /*
+     * Constructs UserDataService with user repository related date
+     * @param usersRepository for user data access
+     */
     public UserDataService(UserRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
-    
-    //findAll selects and returns all rows in table
+    /*
+     * findAll selects and 
+     * @return all users rows in table
+     */
     @Override
     public List<UserEntity> findAll() {
        List<UserEntity> users = new ArrayList<>();
@@ -35,7 +47,13 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
        }
        return users;
     }
-    //findByUsername selects a user by username
+    /*
+     * findByUsername selects a user by username
+     * 
+     * @param username to search for
+     * @return object if found otherwise null
+     */
+    
 public UserEntity findByUsername(String username) {
     try {
         return usersRepository.findByUsername(username);
@@ -45,8 +63,11 @@ public UserEntity findByUsername(String username) {
     }
 }
 
-
-    //findById (WIP)
+    /*
+     * findById (WIP)
+     * @param id of user
+     * @return object user, otherwise null
+     */
     @Override
     public UserEntity findById(int id) {
     	try {
@@ -58,7 +79,13 @@ public UserEntity findByUsername(String username) {
         }
     }
 
-    //create inserts a user and returns boolean
+    /*
+     * Creates a new user
+     * 
+     * @param user object to create
+     * @return true if create, false if not
+     */
+
     @Override
     public boolean create(UserEntity user) {
         try {
@@ -69,14 +96,16 @@ public UserEntity findByUsername(String username) {
         }
         return true;
     }
-
-    //update (WIP)
+    /*
+     * updates existing user
+     */
     @Override
     public boolean update(UserEntity t) {
         return true;
     }
-
-    //delete (WIP)
+    /*
+     * deletes user
+     */
     @Override
     public boolean delete(UserEntity t) {
         return true;

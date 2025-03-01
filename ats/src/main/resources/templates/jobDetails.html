@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorate="layouts/defaultTemplate">
 
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div layout:fragment="content" class="container">
-    <h2 class="text-center">Job Resumes</h2>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <table class="table table-bordered table-striped">
+    <div layout:fragment="content" class="container mt-4">
+        <h2 class="text-center mb-4">Job Applicants</h2>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th class="text-center">Name</th>
@@ -24,45 +26,16 @@
                         <td class="text-center" colspan="4">No Applicants</td>
                     </tr>
                     <tr th:each="applicant : ${applicants}">
-                        <td class="text-center"><h5 th:text="${applicant.name}"></h5></td>
-                        <td class="text-center"><h5 th:text="${applicant.phone}"></h5></td>
-                        <td class="text-center"><h5 th:text="${applicant.history}"></h5></td>
-                        <td class="text-center"><h5 th:text="${applicant.skills}"></h5></td>
+                        <td class="text-center">
+                            <a th:href="@{/applicants/{id}(id=${applicant.id})}" th:text="${applicant.name}" class="font-weight-bold"></a>
+                        </td>
+                        <td class="text-center" th:text="${applicant.phone}"></td>
+                        <td class="text-center" th:text="${applicant.history}"></td>
+                        <td class="text-center" th:text="${applicant.skills}"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-</div>
 </body>
-	<body>
-		<div layout:fragment="content">
-		<table class="table table-hover" style="width:70%">
-			<thead>
-				<tr>
-					<th style="text-align:center">Name</th>
-					<th style="text-align:center">Phone Number</th>
-					<th style="text-align:center">Job History</th>
-					<th style="text-align:center">Skills</th>
-				</tr>
-			</thead>
-			<tbody .table-hover>
-				<tr th:if="${applicants.empty}">
-					<td style="text-align:center" colspan="4">No Job Applicants</td>
-				</tr>
-				<tr style="border:0.1em solid gray;" th:each="applicant : ${applicants}">
-                    <td class="text-center">
-                        <a th:href="@{/applicants/{id}(id=${applicant.id})}" th:text="${applicant.name}"></a>
-                    </td>
-					<td style="text-align:center"><h5 th:text="${applicant.phone}">Product 1</h5></td>
-					<td style="text-align:center"><h5 th:text="${applicant.history}">1.0</h5></td>
-					<td style="text-align:center"><h5 th:text="${applicant.skills}">1</h5></td>
-                    
-                </tr>
-			</tbody>
-		</table>
-		</div>
-		
-	</body>
-
 </html>

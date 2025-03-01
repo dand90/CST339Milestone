@@ -3,22 +3,29 @@ package com.gcu.services;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gcu.data.ProductDataService;
 import com.gcu.entity.ProductEntity;
 import com.gcu.model.ProductModel;
+/*
+ * 
+ * //ProductBusinessService implements ProductBusinessInterface 
+ * handles CRUD operations
+ * 
+ */
 
-//ProductBusinessService implements ProductBusinessInterface 
 @Service
 public class ProductBusinessService implements ProductBusinessServiceInterface {
 
     @Autowired
     ProductDataService service;
-    
-    //getProducts Method: returns products using findAll as a productsDomain ArrayList
+    /*
+     * Retrieves data from database
+     * //getProducts Method: returns products using findAll as a productsDomain ArrayList
+     */
+
     @Override
     public List<ProductModel> getProducts() {
         List<ProductEntity> productEntity = service.findAll();
@@ -30,8 +37,12 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
         
         return productsDomain;
     }
-
-    // addProduct Method: sets ProductEntity to ProductModel and returns a boolean if the new product is created
+    /*
+     *
+     *
+     * addProduct Method: sets ProductEntity to ProductModel and returns a boolean if the new product is created 
+     */
+    
     @Override
     public List<ProductModel> addProduct(ProductModel productModel) {
         ProductEntity productEntity = new ProductEntity();
@@ -50,8 +61,11 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
             return new ArrayList<>();
         }
     }
-
-    //getProductById method: finds a row by id and maps the values to productEntity
+    /*
+     * 
+     * getProductById method: finds a row by id and maps the values to productEntity
+     */
+   
     @Override
     public ProductModel getProductById(int id) {
         ProductEntity productEntity = service.findById(id);
@@ -69,16 +83,22 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
             return null;
         }
     }
-
-    //DeleteProduct method finds the row by Id and deletes the product mapped to the product entity
+    /*
+     *
+     * DeleteProduct method finds the row by Id and deletes the product mapped to the product entity 
+     */
+    
     public void deleteProduct(int id) {
         ProductEntity productEntity = service.findById(id);  
         if (productEntity != null) {
             service.delete(productEntity);  // Delete the product
         }
     }
-
-    //UpdateProduct method maps values to the product entity from product model and saves the update
+    /*
+     * 
+     * UpdateProduct method maps values to the product entity from product model and saves the update
+     */
+    
     public void updateProduct(int id, ProductModel updatedProduct) {
         ProductEntity productEntity = service.findById(id); 
         if (productEntity != null) {

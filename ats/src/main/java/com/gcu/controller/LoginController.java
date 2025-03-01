@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 //import javax.validation.Valid;
 
+/*
+ * Controller for user authentication and login views
+ */
 //Master Controller 
 @Controller
 public class LoginController {

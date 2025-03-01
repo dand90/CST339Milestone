@@ -1,38 +1,82 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <link rel="stylesheet" href="/css/style.css">
-    <style>
-        .user-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .user-details div {
-            flex: 1;
-            padding: 10px;
-        }
-    </style>
 <head>
     <meta charset="UTF-8">
     <title>Applicant Details</title>
-    
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        body {
+            background: linear-gradient(to right, #a3c3f4, #e2e9f0);
+            color: black;
+        }
+        .card-header {
+            background: #007bff;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        .border-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f8f9fa;
+            margin-bottom: 10px;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 5px;
+        }
+        .btn-primary { background: #007bff; color: #ffffff; }
+        .btn-secondary { background: #6c757d; color: #ffffff; }
+    </style>
 </head>
 <body>
-    <h1>User Details</h1>
-    <div class="user-details" th:if="${applicant != null}">
-        <h3>Full Name: <span th:text="${applicant.name}"></span></h3>
-        <p>Phone Number: <span th:text="${applicant.phone}"></span></p>
-        <p>History: <span th:text="${applicant.history}"></span></p>
-        <p>Skills: <span th:text="${applicant.skills}"></span></p>
+    <div class="container">
+        <div th:if="${applicant != null}" class="card">
+            <div class="card-header">
+                Applicant Resume: <span th:text="${applicant.name}"></span>
+            </div>
+            <div class="card-body">
+                <p><strong>Phone Number:</strong> <span th:text="${applicant.phone}"></span></p>
+                <p><strong>Job History:</strong></p>
+                <div class="border-box" th:text="${applicant.history}"></div>
+                <p><strong>Skills:</strong></p>
+                <div class="border-box" th:text="${applicant.skills}"></div>
+                <div class="btn-container">
+                    <a href="/products" class="btn btn-secondary">Back to Job Listings</a>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${applicant == null}" class="alert alert-danger text-center">
+            <p th:text="${error}">Applicant not found.</p>
+        </div>
     </div>
-    <div th:if="${applicant == null}">
-        <p th:text="${error}"></p>
-    </div>
-    <a href="/products">Back to Product Listings</a>
 </body>
 </html>

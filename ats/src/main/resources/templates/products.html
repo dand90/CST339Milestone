@@ -1,49 +1,54 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
-
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorate="layouts/defaultTemplate">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
 </head>
-	<body>
-		<div layout:fragment="content">
-		<table class="table table-hover" style="width:70%">
-			<thead>
-				<tr>
-					<th style="text-align:center">Job Posting</th>
-					<th style="text-align:center">Employer Name</th>
-					<th style="text-align:center">Hourly Salary</th>
-					<th style="text-align:center">Openings</th>
-				</tr>
-			</thead>
-			<tbody .table-hover>
-				<tr th:if="${products.empty}">
-					<td style="text-align:center" colspan="4">No Job Listings</td>
-				</tr>
-				<tr style="border:0.1em solid gray;" th:each="product : ${products}">
-                    <td class="text-center">
-                        <a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.jobPosting}"></a>
-                    </td>
-					<td style="text-align:center"><h5 th:text="${product.employerName}">Product 1</h5></td>
-					<td style="text-align:center"><h5 th:text="${product.salaryHr}">1.0</h5></td>
-					<td style="text-align:center"><h5 th:text="${product.openingsNo}">1</h5></td>
-                    <td class="text-center">
-                    <form th:action="@{/applicants/{id}/product(id=${product.id})}" method="get" style="display:inline;">
-                            <button type="submit" class="btn">View Job Applicants</button>   
-                        </form>
-                        <form th:action="@{/editPosting/{id}(id=${product.id})}" method="get" style="display:inline;">
-                            <button type="submit" class="btn">Edit</button>    
-                        </form>
-                        <form th:action="@{/deletePosting/{id}(id=${product.id})}" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-			</tbody>
-		</table>
-		<a href="/newPosting/" target="_blank">Create a New Job Posting<br/></a>
-		</div>
-		
-	</body>
+<body>
+    <div layout:fragment="content" class="container mt-4">
+        <h2 class="text-center mb-4">Job Listings</h2>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Job Posting</th>
+                        <th class="text-center">Employer Name</th>
+                        <th class="text-center">Hourly Salary</th>
+                        <th class="text-center">Openings</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${products.empty}">
+                        <td class="text-center" colspan="5">No Job Listings</td>
+                    </tr>
+                    <tr th:each="product : ${products}">
+                        <td class="text-center">
+                            <a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.jobPosting}" class="font-weight-bold"></a>
+                        </td>
+                        <td class="text-center" th:text="${product.employerName}"></td>
+                        <td class="text-center" th:text="${product.salaryHr}"></td>
+                        <td class="text-center" th:text="${product.openingsNo}"></td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a th:href="@{/applicants/{id}/product(id=${product.id})}" class="btn btn-info btn-sm">View Applicants</a>
+                                <a th:href="@{/editPosting/{id}(id=${product.id})}" class="btn btn-warning btn-sm">Edit</a>
+                                <form th:action="@{/deletePosting/{id}(id=${product.id})}" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
+        <div class="text-center mt-3">
+            <a href="/newPosting/" class="btn btn-success">Create a New Job Posting</a>
+        </div>
+    </div>
+</body>
 </html>

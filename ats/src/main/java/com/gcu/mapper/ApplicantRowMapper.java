@@ -7,9 +7,16 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.gcu.entity.ApplicantsEntity;
 
-//UserRowMapper Class
+/*
+ * UserRowMapper Class
+ */
+
 public class ApplicantRowMapper implements RowMapper<ApplicantsEntity> {
-    //mapRow Method: maps UserEntity to MySQL columns
+    /*
+     * UserRowMapper Class
+     * @return object data from result
+     */
+
     @Override
     public ApplicantsEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
        return new ApplicantsEntity(rs.getLong("id"), rs.getString("name"), rs.getString("phone"), rs.getString("history"), rs.getString("skills"), rs.getLong("jobPosting_id"));

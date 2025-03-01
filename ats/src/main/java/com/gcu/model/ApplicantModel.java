@@ -1,7 +1,11 @@
 package com.gcu.model;
 
+/*
+ * Model for applicant controller
+ * includes applicants detiails and associated job id
+ * 
+ */
 
-//Model for applicant controller
 public class ApplicantModel 
 {
 
@@ -12,7 +16,17 @@ public class ApplicantModel
 	private String skills;
 	private Long jobPosting_id;
 
-	// ApplicanttModel constructor
+	
+	/**
+     * ApplicanttModel constructor
+     *
+     * @param id             Unique identifier for the applicant.
+     * @param name           Full name of the applicant.
+     * @param phone          Phone number of the applicant.
+     * @param history        Work history or experience of the applicant.
+     * @param skills         Skills possessed by the applicant.
+     * @param jobPosting_id  ID of the associated job posting.
+     */
 	public ApplicantModel(Long id, String name, String phone, String history, String skills, Long jobPosting_id) {
 		this.id = id;
 		this.name = name;
@@ -22,56 +36,117 @@ public class ApplicantModel
 		this.jobPosting_id = jobPosting_id;
 	}
 
-	//Default Construcotr for ApplicantModel
-	public ApplicantModel() {
-	}
-	// Getters and setters for ProductModel
-	public Long getId() {
-		return id;
-	}
+	/**
+     * Default constructor for ApplicantModel.
+     */
+    public ApplicantModel() {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /**
+     * Retrieves  applicant ID.
+     *
+     * @return applicant's unique id.
+     */
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    /**
+     * Sets applicant ID.
+     *
+     * @param id unique id to set for the applicant.
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * Retrieves applicant's full name.
+     *
+     * @return the name of applicant.
+     */
+    public String getName() {
+        return name;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    /**
+     * Sets applicant full name.
+     *
+     * @param name the name to set.
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    /**
+     * Retrieves applicant phone number.
+     *
+     * @return phone number of applicant.
+     */
+    public String getPhone() {
+        return phone;
+    }
 
-	public String getHistory() {
-		return history;
-	}
+    /**
+     * Sets applicant phone number.
+     *
+     * @param phone the phone number to set.
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public void setHistory(String history) {
-		this.history = history;
-	}
+    /**
+     * Retrieves applicant's work history.
+     *
+     * @return the work history.
+     */
+    public String getHistory() {
+        return history;
+    }
 
-	public String getSkills() {
-		return skills;
-	}
+    /**
+     * Sets applicant's work history.
+     *
+     * @param history work history set for applicant.
+     */
+    public void setHistory(String history) {
+        this.history = history;
+    }
 
-	public void setSkills(String skills) {
-		this.skills = skills;
-	}
+    /**
+     * Retrieves applicant skills.
+     *
+     * @return skills of applicant.
+     */
+    public String getSkills() {
+        return skills;
+    }
 
-	public Long getjobPosting_Id() {
-		return jobPosting_id;
-	}
+    /**
+     * Setse applicant skills.
+     *
+     * @param skills to set for applicant.
+     */
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
 
-	public void setjobPosting_id(Long jobPosting_id) {
-		this.jobPosting_id = jobPosting_id;
-	}
-    
+    /**
+     * Retrieves job posting ID associated with applicant.
+     *
+     * @return ID of the associated job posting.
+     */
+    public Long getjobPosting_Id() {
+        return jobPosting_id;
+    }
+
+    /**
+     * Sets job posting ID associated with applicant.
+     *
+     * @param jobPosting_id job posting ID to set.
+     */
+    public void setjobPosting_id(Long jobPosting_id) {
+        this.jobPosting_id = jobPosting_id;
+    }
 }

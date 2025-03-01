@@ -1,8 +1,11 @@
 package com.gcu.model;
 
-import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
-
+import javax.validation.constraints.Size;
+/*
+ * user in applicatino with user details
+ * provides all getter and setters methods for properties
+ */
 
 //model for User class
 public class UserModel {
@@ -32,8 +35,11 @@ public class UserModel {
 
 	private String fullName;
 	
+	/*
+	 * user model constructor
+	 */
 	
-	//user model constructor
+
 	public UserModel(String fName, String lName, String email, String pNumber, String username, String password) {
 		this.fName = fName;
 		this.lName = lName;
@@ -46,117 +52,120 @@ public class UserModel {
 		
 	}
 	
-	
-	
-	
-	public UserModel() {
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-
 	/**
-	 * @return the fName
-	 */
-	public String getfName() {
-		return fName;
-	}
+     * Default constructor for UserModel.
+     */
+    public UserModel() {
+        // Default constructor
+    }
 
-	/**
-	 * @param fName the fName to set
-	 */
-	public void setfName(String fName) {
-		this.fName = fName;
-	}
+    /**
+     * @return The first name of the user.
+     */
+    public String getfName() {
+        return fName;
+    }
 
-	/**
-	 * @return the lName
-	 */
-	public String getlName() {
-		return lName;
-	}
+    /**
+     * Sets the first name of the user.
+     *
+     * @param fName The first name to set.
+     */
+    public void setfName(String fName) {
+        this.fName = fName;
+    }
 
-	/**
-	 * @param lName the lName to set
-	 */
-	public void setlName(String lName) {
-		this.lName = lName;
-	}
+    /**
+     * @return The last name of the user.
+     */
+    public String getlName() {
+        return lName;
+    }
 
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
+    /**
+     * Sets the last name of the user.
+     *
+     * @param lName The last name to set.
+     */
+    public void setlName(String lName) {
+        this.lName = lName;
+    }
 
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    /**
+     * @return The email of the user.
+     */
+    public String getEmail() {
+        return email;
+    }
 
-	/**
-	 * @return the pNumber
-	 */
-	public String getpNumber() {
-		return pNumber;
-	}
+    /**
+     * Sets the email of the user.
+     *
+     * @param email The email to set.
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	/**
-	 * @param pNumber the pNumber to set
-	 */
-	public void setpNumber(String pNumber) {
-		this.pNumber = pNumber;
-	}
+    /**
+     * @return The phone number of the user.
+     */
+    public String getpNumber() {
+        return pNumber;
+    }
 
-	/**
-	 * @return the username
-	 */
-	public String getUsername() {
-		return username;
-	}
+    /**
+     * Sets the phone number of the user.
+     *
+     * @param pNumber The phone number to set.
+     */
+    public void setpNumber(String pNumber) {
+        this.pNumber = pNumber;
+    }
 
-	/**
-	 * @param username the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    /**
+     * @return The username of the user.
+     */
+    public String getUsername() {
+        return username;
+    }
 
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
+    /**
+     * Sets the username of the user.
+     *
+     * @param username The username to set.
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    /**
+     * @return The password of the user.
+     */
+    public String getPassword() {
+        return password;
+    }
 
+    /**
+     * Sets the password of the user.
+     *
+     * @param password The password to set.
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    /**
+     * @return The full name of the user (combination of first and last name).
+     */
+    public String getFullName() {
+        return fullName;
+    }
 
-
-	/**
-	 * @return the fullName
-	 */
-	public String getFullName() {
-		return fullName;
-	}
-
-
-
-
-	/**
-	 * @param fullName the fullName to set
-	 */
-	public void setFullName() {
-		this.fullName = fName + " " + lName;;
-	}
+    /**
+     * Updates the full name field by combining first and last names.
+     */
+    public void setFullName() {
+        this.fullName = fName + " " + lName;
+    }
 }

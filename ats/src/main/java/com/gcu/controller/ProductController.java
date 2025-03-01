@@ -12,14 +12,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.gcu.model.ProductModel;
 import com.gcu.services.ProductBusinessService;
 
-//ProductController class maps /products and returns products
+/*
+ * ProductController class maps /products and returns products
+ * 
+ */
 @Controller
 public class ProductController {
 
     @Autowired
     ProductBusinessService service;
 
-    //Get Products: view the products (job listings)
+    /*
+     * Get Products: view the products (job listings)
+     * 
+     * @param object model passed to view
+     * @return products view
+     */   
     @GetMapping("/products")
     public String getAllProducts(Model model) {
 
@@ -30,8 +38,12 @@ public class ProductController {
 
         return "products";
     }
-
-    //GET product by ID: user can click a product to view details and applications
+    /*
+     * GET product by ID: user can click a product to view details and applications
+     * @param id to retrieve
+     * @param object model passed to view
+     * @return view of posting details
+     */
     @GetMapping("/products/{id}")
     public String getProductById(@PathVariable("id") int id, Model model) {
         ProductModel product = service.getProductById(id);
@@ -44,15 +56,24 @@ public class ProductController {
 
         return "postingDetails";  // The view for displaying the product detail
     }
-
+    /*
+     * deletes job by id
+     * @param id
+     * @return redirect page after deletion
+     */
     //POST delete a posting: deletes a filled or no longer needed job posting
     @PostMapping("/deletePosting/{id}")
     public String deleteProduct(@PathVariable("id") int id) {
         service.deleteProduct(id); 
         return "redirect:/products"; 
     }
-
-    //GET edit posting: gets the posting by id and allows the user to edit posting details
+    /*
+     * GET edit posting: gets the posting by id and allows the user to edit posting details
+     * 
+     * @param id of product to edit
+     * @return model object pass to view
+     * @return updated view
+     */
     @GetMapping("/editPosting/{id}")
     public String editProduct(@PathVariable("id") int id, Model model) {
         ProductModel product = service.getProductById(id);
@@ -64,8 +85,12 @@ public class ProductController {
             return "products"; 
         }
     }
-
-    // POST update posting: posts the updated posting
+    /*
+     * POST update posting: posts the updated posting
+     * @param id of product to edit
+     * @return model object pass to view
+     * @return updated view
+     */
     @PostMapping("/updatePosting/{id}")
     public String updateProduct(@PathVariable("id") int id, ProductModel updatedProduct) {
         service.updateProduct(id, updatedProduct); 

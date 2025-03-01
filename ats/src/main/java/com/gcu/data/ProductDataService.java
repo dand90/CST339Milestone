@@ -9,18 +9,33 @@ import org.springframework.stereotype.Service;
 import com.gcu.entity.ProductEntity;
 import com.gcu.repository.ProductRepository;
 
-//ProductDataService implements DataAccessInterface for CRUD operations
+/*
+ * ProductDataService implements DataAccessInterface for 
+ * CRUD operations
+ * 
+ */
+
 @Service
 public class ProductDataService implements DataAccessInterface<ProductEntity> {
 
+    /*
+     * Repository for product related data
+     */
     @Autowired
     private ProductRepository productsRepository;
 
+    /*
+     * Constructs service with specified product
+     * 
+     * @param prodcutsRepository for product data access
+     */
     public ProductDataService(ProductRepository productsRepository) {
         this.productsRepository = productsRepository;
     }
-    
-    // findAll selects all products in jobpostings table
+    /*
+     * Gets all products
+     * @return all products in jobpostings table
+     */
     @Override
     public List<ProductEntity> findAll() {
        List<ProductEntity> products = new ArrayList<>();
@@ -35,8 +50,11 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
        }
        return products;
     }
-
-    // findById selects products containing a matching ID
+    /*
+     * findById selects products containing a matching ID
+     * @param id of product
+     * @return object if found, otherwise null
+     */
     @Override
     public ProductEntity findById(int id) {
         try {
@@ -47,8 +65,11 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
             return null;  
         }
     }
-
-    //Create inserts a new product into the table
+    /*
+     * Create inserts a new product into the table
+     * @param object to create
+     * @return true if success false if not
+     */
     @Override
     public boolean create(ProductEntity product) {
         try {
@@ -59,8 +80,11 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
         }
         return true;
     }
-
-    //Update updates a product in the table
+    /*
+     * Update updates a product in the table
+     * @param object with updated data
+     * @return true if updated, false if not
+     */
     @Override
     public boolean update(ProductEntity product) {
         try {
@@ -71,8 +95,12 @@ public class ProductDataService implements DataAccessInterface<ProductEntity> {
             return false;
         }
     }
-
-    //Delete removes a row from the table
+    /*
+     * Delete removes a row from the table
+     * 
+     * @param object with updated data
+     * @return true if updated false if not.
+     */
     @Override
     public boolean delete(ProductEntity product) {
         try {

@@ -10,13 +10,20 @@ import com.gcu.data.ApplicantDataService;
 import com.gcu.entity.ApplicantsEntity;
 import com.gcu.model.ApplicantModel;
 
+/*
+ * logic for managing applicants
+ * mthods for getting, pushing, and setting, applicants
+ * 
+ */
 @Service
 public class ApplicantBusinessService implements ApplicantBusinessServiceInterface {
 
     @Autowired
     private ApplicantDataService service;
-
-    // Returns applicants as an ApplicantModel list
+    /*
+    * 
+    * Returns applicants as an ApplicantModel list
+         */
     public List<ApplicantModel> getApplicants() {
         List<ApplicantsEntity> applicantEntities = service.findAll();
         List<ApplicantModel> applicantsDomain = new ArrayList<>();
@@ -33,10 +40,14 @@ public class ApplicantBusinessService implements ApplicantBusinessServiceInterfa
         }
         return applicantsDomain;
     }
+    /*
+     *Adds an applicant and returns updated list
+     */
 
-    // Adds an applicant and returns updated list
     public List<ApplicantModel> addApplicant(ApplicantModel applicantModel) {
-        // Map ApplicantModel to ApplicantsEntity
+        /*
+        *Map ApplicantModel to ApplicantsEntity
+        */
         ApplicantsEntity applicantEntity = new ApplicantsEntity();
         applicantEntity.setName(applicantModel.getName());
         applicantEntity.setPhone(applicantModel.getPhone());
@@ -44,14 +55,20 @@ public class ApplicantBusinessService implements ApplicantBusinessServiceInterfa
         applicantEntity.setSkills(applicantModel.getSkills());
         applicantEntity.setJobPostingId(1L); 
 
-        // Save the entity using service
+        /*
+         * Save the entity using service
+         */
+        // 
         boolean success = service.create(applicantEntity);
-
-        // If creation is successful, return the updated list of applicants
+        /*
+         * If creation is successful, return the updated list of applicants
+         */
+        // 
         return success ? getApplicants() : new ArrayList<>();
     }
-
-    // Fetches a single applicant by ID
+    /*
+     * Fetches a single applicant by ID
+     */
     public ApplicantModel getApplicantById(long id) {
         ApplicantsEntity applicantsEntity = service.findById((int) id);
         if (applicantsEntity != null) {
@@ -67,6 +84,9 @@ public class ApplicantBusinessService implements ApplicantBusinessServiceInterfa
         return null;
     }
 
+    /*
+     * 
+     */
     @Override
     public List<ApplicantModel> getApplicantsByJobPosting(Long jobPostingId) {
         List<ApplicantsEntity> applicants = service.getApplicantsByJobPostingId(jobPostingId);

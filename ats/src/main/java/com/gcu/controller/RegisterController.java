@@ -1,5 +1,7 @@
 package com.gcu.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,15 +13,19 @@ import com.gcu.business.UserRegistrationService;
 import com.gcu.model.LoginModel;
 import com.gcu.model.UserModel;
 
-import javax.validation.Valid;
-
+/*
+ * Controller for user registration
+ */
 @Controller
 public class RegisterController {
 
 	@Autowired
 	private UserRegistrationService registrationService;
 
-    //Controller for the register page
+	/*
+	 * Controller for the register page
+	 * @return register view
+	 */
 	@GetMapping("/register")
 	public String register(Model model) {
 			
@@ -28,8 +34,9 @@ public class RegisterController {
 		
 		return "register";
 	}
-    
-	//Controller for the page after Registration to redirect to login
+    /*
+	 * Controller for the page after Registration to redirect to login
+	 */
 	@PostMapping("/reLogin")
 	public String reLogin(@Valid UserModel userModel, BindingResult bindingresult, Model model) {
 		//check for errors in the register form
@@ -38,7 +45,9 @@ public class RegisterController {
 			model.addAttribute("loginModel", new LoginModel());
 			return "register";
 		}
-		//calls registerUser from UserRegistrationService to create new user
+		/*
+		 * calls registerUser from UserRegistrationService to create new user
+		 */
 		if (registrationService.registerUser(userModel)) {
 			model.addAttribute("title", "Registration Successful");
 			return "reLogin";
